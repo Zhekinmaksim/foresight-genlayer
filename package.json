@@ -10,7 +10,10 @@
   },
   "dependencies": {
     "dotenv": "^16.4.5",
-    "genlayer-js": "^0.27.6"
+    "genlayer-js": "^0.27.6",
+    "next": "14.2.3",
+    "react": "^18",
+    "react-dom": "^18"
   },
   "devDependencies": {
     "@types/node": "^20.11.0",
