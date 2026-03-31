@@ -1,0 +1,20 @@
+{
+  "name": "genlayer-prediction-market",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "deploy": "ts-node deploy/deployScript.ts",
+    "seed": "ts-node deploy/seedMarkets.ts",
+    "dev": "cd frontend && npm run dev",
+    "build": "cd frontend && npm run build"
+  },
+  "dependencies": {
+    "dotenv": "^16.4.5",
+    "genlayer-js": "^0.27.6"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.0",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.3.3"
+  }
+}

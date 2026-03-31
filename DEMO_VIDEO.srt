@@ -1,0 +1,40 @@
+1
+00:00:00,000 --> 00:00:06,000
+This is Foresight, a prediction market built on GenLayer.
+
+2
+00:00:06,000 --> 00:00:14,000
+What you're looking at here is a live market feed pulled from the contract.
+
+3
+00:00:14,000 --> 00:00:21,000
+Every market has a yes side, a no side, pool balances, and resolution criteria.
+
+4
+00:00:21,000 --> 00:00:32,000
+The key idea is that resolution does not depend on a centralized admin or a traditional oracle.
+
+5
+00:00:32,000 --> 00:00:43,000
+Instead, the GenLayer contract can fetch a live webpage, like BBC or Reuters,
+and LLM validators reach consensus on whether the criteria were met.
+
+6
+00:00:43,000 --> 00:00:51,000
+On the user side, the flow is simple.
+You connect MetaMask on GenLayer Bradbury, open a market, and place a bet.
+
+7
+00:00:51,000 --> 00:01:02,000
+Right now Bradbury write transactions are unstable,
+so this demo includes a clearly marked fallback for betting.
+
+8
+00:01:02,000 --> 00:01:10,000
+Reads still come from the live contract,
+and the full product flow is still visible even when the testnet stalls.
+
+9
+00:01:10,000 --> 00:01:20,000
+The result is a prediction market interface where market state is transparent,
+resolution logic is explicit, and the user experience stays simple.
