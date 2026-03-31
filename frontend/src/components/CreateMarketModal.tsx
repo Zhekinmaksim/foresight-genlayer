@@ -96,14 +96,14 @@ export default function CreateMarketModal({ userAddress, onClose, onCreated }: P
 
   const mono: React.CSSProperties = { fontFamily: "var(--mono)" };
   const lbl: React.CSSProperties = {
-    ...mono, fontSize: "9px", color: "var(--text5)",
+    ...mono, fontSize: "11px", color: "var(--text4)",
     letterSpacing: "0.08em", textTransform: "uppercase",
     display: "block", marginBottom: "5px",
   };
   const inp: React.CSSProperties = {
-    ...mono, fontSize: "11px", color: "var(--text3)",
+    ...mono, fontSize: "14px", color: "var(--text2)",
     background: "var(--bg2)", border: "1px solid var(--border2)",
-    borderRadius: "3px", padding: "8px 10px", width: "100%",
+    borderRadius: "3px", padding: "10px 12px", width: "100%",
     outline: "none",
   };
 
@@ -118,7 +118,7 @@ export default function CreateMarketModal({ userAddress, onClose, onCreated }: P
         background: "var(--bg1)",
         border: "1px solid var(--border2)",
         borderRadius: "4px",
-        width: "100%", maxWidth: "480px",
+        width: "100%", maxWidth: "560px",
         maxHeight: "90vh", overflowY: "auto",
       }}>
         {/* Header */}
@@ -126,12 +126,12 @@ export default function CreateMarketModal({ userAddress, onClose, onCreated }: P
           display: "flex", alignItems: "center", justifyContent: "space-between",
           padding: "14px 18px", borderBottom: "1px solid var(--border)",
         }}>
-          <span style={{ ...mono, fontSize: "11px", color: "var(--text3)", letterSpacing: "0.04em" }}>
+          <span style={{ ...mono, fontSize: "14px", color: "var(--text2)", letterSpacing: "0.04em" }}>
             new prediction market
           </span>
           <button
             onClick={onClose}
-            style={{ ...mono, fontSize: "12px", color: "var(--text5)", background: "none", border: "none", cursor: "pointer" }}
+            style={{ ...mono, fontSize: "14px", color: "var(--text4)", background: "none", border: "none", cursor: "pointer" }}
           >
             ✕
           </button>
@@ -148,9 +148,9 @@ export default function CreateMarketModal({ userAddress, onClose, onCreated }: P
                   key={i}
                   onClick={() => apply(p)}
                   style={{
-                    ...mono, fontSize: "10px", color: "var(--text4)",
+                    ...mono, fontSize: "12px", color: "var(--text2)",
                     background: "var(--bg2)", border: "1px solid var(--border)",
-                    borderRadius: "3px", padding: "7px 10px", cursor: "pointer",
+                    borderRadius: "3px", padding: "9px 11px", cursor: "pointer",
                     textAlign: "left", lineHeight: 1.4,
                     transition: "border-color 0.1s",
                   }}
@@ -190,7 +190,7 @@ export default function CreateMarketModal({ userAddress, onClose, onCreated }: P
               placeholder="https://www.bbc.com/news/business"
               style={{ ...inp, color: "var(--green)" }}
             />
-            <div style={{ ...mono, fontSize: "9px", color: "var(--text5)", marginTop: "4px" }}>
+            <div style={{ ...mono, fontSize: "11px", color: "var(--text4)", marginTop: "6px" }}>
               use public news pages — bbc.com, reuters.com, apnews.com
             </div>
           </div>
@@ -218,7 +218,7 @@ export default function CreateMarketModal({ userAddress, onClose, onCreated }: P
               onChange={(e) => setDays(Number(e.target.value))}
               style={{ width: "100%", accentColor: "var(--green)" }}
             />
-            <div style={{ display: "flex", justifyContent: "space-between", ...mono, fontSize: "9px", color: "var(--text5)", marginTop: "3px" }}>
+            <div style={{ display: "flex", justifyContent: "space-between", ...mono, fontSize: "11px", color: "var(--text4)", marginTop: "5px" }}>
               <span>1 day</span><span>1 year</span>
             </div>
           </div>
@@ -228,8 +228,8 @@ export default function CreateMarketModal({ userAddress, onClose, onCreated }: P
             background: "var(--bg2)", border: "1px solid var(--border)",
             borderRadius: "3px", padding: "10px 12px", marginBottom: "14px",
           }}>
-            <div style={{ ...mono, fontSize: "9px", color: "var(--green)", letterSpacing: "0.06em", marginBottom: "5px" }}>HOW RESOLUTION WORKS</div>
-            <div style={{ ...mono, fontSize: "9px", color: "var(--text5)", lineHeight: 1.7 }}>
+            <div style={{ ...mono, fontSize: "11px", color: "var(--green)", letterSpacing: "0.06em", marginBottom: "6px" }}>HOW RESOLUTION WORKS</div>
+            <div style={{ ...mono, fontSize: "11px", color: "var(--text3)", lineHeight: 1.8 }}>
               After deadline, anyone calls <span style={{ color: "var(--green)" }}>resolve_market()</span>.
               The Intelligent Contract executes <span style={{ color: "var(--green)" }}>gl.get_webpage(url)</span> on-chain,
               passes content to 5 LLM validators who evaluate your criteria via Optimistic Democracy.
@@ -242,10 +242,10 @@ export default function CreateMarketModal({ userAddress, onClose, onCreated }: P
               background: "var(--amber-bg)", border: "1px solid var(--amber-br)",
               borderRadius: "3px", padding: "10px 12px", marginBottom: "14px",
             }}>
-              <div style={{ ...mono, fontSize: "9px", color: "var(--amber)", letterSpacing: "0.06em", marginBottom: "5px" }}>
+              <div style={{ ...mono, fontSize: "11px", color: "var(--amber)", letterSpacing: "0.06em", marginBottom: "6px" }}>
                 CREATOR ECONOMICS
               </div>
-              <div style={{ ...mono, fontSize: "9px", color: "var(--text4)", lineHeight: 1.7 }}>
+              <div style={{ ...mono, fontSize: "11px", color: "var(--text3)", lineHeight: 1.8 }}>
                 The current contract routes {(Number(feeConfig.creator_fee_bps) / 100).toFixed(2)}% of each incoming bet
                 to the market creator and {(Number(feeConfig.protocol_fee_bps) / 100).toFixed(2)}% to protocol.
               </div>
@@ -256,16 +256,16 @@ export default function CreateMarketModal({ userAddress, onClose, onCreated }: P
             background: "var(--bg2)", border: "1px solid var(--border)",
             borderRadius: "3px", padding: "10px 12px", marginBottom: "14px",
           }}>
-            <div style={{ ...mono, fontSize: "9px", color: "var(--text4)", lineHeight: 1.7 }}>
+            <div style={{ ...mono, fontSize: "11px", color: "var(--text3)", lineHeight: 1.8 }}>
               If Bradbury stalls during the hackathon demo, market creation falls back locally in this browser so the full product flow remains usable.
             </div>
           </div>
 
           {error && (
             <div style={{
-              ...mono, fontSize: "9px", color: "var(--red)",
+              ...mono, fontSize: "11px", color: "var(--red)",
               background: "var(--red-bg)", border: "1px solid var(--red-br)",
-              borderRadius: "3px", padding: "7px 10px", marginBottom: "12px",
+              borderRadius: "3px", padding: "9px 10px", marginBottom: "12px",
             }}>
               {error}
             </div>
@@ -278,8 +278,8 @@ export default function CreateMarketModal({ userAddress, onClose, onCreated }: P
               width: "100%", background: submitting ? "var(--bg3)" : "var(--green-bg)",
               border: `1px solid ${submitting ? "var(--border2)" : "var(--green-br)"}`,
               color: submitting ? "var(--text5)" : "var(--green)",
-              fontFamily: "var(--mono)", fontSize: "11px", letterSpacing: "0.06em",
-              padding: "11px", borderRadius: "3px", cursor: submitting ? "not-allowed" : "pointer",
+              fontFamily: "var(--mono)", fontSize: "13px", letterSpacing: "0.06em",
+              padding: "13px", borderRadius: "3px", cursor: submitting ? "not-allowed" : "pointer",
             }}
           >
             {submitting ? "deploying market on-chain…" : "CREATE MARKET →"}

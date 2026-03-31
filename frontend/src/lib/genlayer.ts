@@ -9,7 +9,7 @@ import { bytesToHex, encodeFunctionData, parseEventLogs } from "viem";
 // Locally:   set it in frontend/.env.local
 export const CONTRACT_ADDRESS =
   (process.env.NEXT_PUBLIC_CONTRACT_ADDRESS as `0x${string}`) ?? "0x0000000000000000000000000000000000000000";
-export const DEMO_FALLBACK_ENABLED = process.env.NEXT_PUBLIC_DEMO_FALLBACK === "true";
+export const DEMO_FALLBACK_ENABLED = process.env.NEXT_PUBLIC_DEMO_FALLBACK !== "false";
 
 const DEMO_STATE_KEY = "foresight_demo_state_v2";
 const BPS_DENOMINATOR = 10_000n;
@@ -417,23 +417,30 @@ async function sendConsensusTransaction(
 
 // ─── Read helpers ─────────────────────────────────────────────────────────────
 export async function getAllMarkets(): Promise<any[]> {
-  let markets: any[] = [];
   try {
-    const result = await publicClient.readContract({
-      address: CONTRACT_ADDRESS,
-      functionName: "get_all_markets",
-      args: [],
-    });
-    markets = Array.isArray(result) ? result : [];
+    let markets: any[] = [];
+    try {
+      const result = await publicClient.readContract({
+        address: CONTRACT_ADDRESS,
+        functionName: "get_all_markets",
+        args: [],
+      });
+      markets = Array.isArray(result) ? result : [];
+    } catch {
+      markets = [];
+    }
+
+    const state = ensureDemoStarterMarkets(markets);
+    const onChainMarkets = markets.map((market) => applyDemoOverlayToMarket(market));
+    const localMarkets = Object.values(state.localMarkets).map((market) => normalizeDemoMarket(market));
+
+    return [...onChainMarkets, ...localMarkets].sort((left, right) => Number(left.id) - Number(right.id));
   } catch {
-    markets = [];
+    const state = ensureDemoStarterMarkets([]);
+    return Object.values(state.localMarkets)
+      .map((market) => normalizeDemoMarket(market))
+      .sort((left, right) => Number(left.id) - Number(right.id));
   }
-
-  const state = ensureDemoStarterMarkets(markets);
-  const onChainMarkets = markets.map((market) => applyDemoOverlayToMarket(market));
-  const localMarkets = Object.values(state.localMarkets).map((market) => normalizeDemoMarket(market));
-
-  return [...onChainMarkets, ...localMarkets].sort((left, right) => Number(left.id) - Number(right.id));
 }
 
 export async function getMarket(id: number): Promise<any> {

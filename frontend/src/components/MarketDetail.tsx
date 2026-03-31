@@ -150,8 +150,8 @@ export default function MarketDetail({ market, userAddress, onUpdate }: Props) {
     : null;
 
   const mono: React.CSSProperties = { fontFamily: "var(--mono)" };
-  const label: React.CSSProperties = { ...mono, fontSize: "9px", color: "var(--text5)", letterSpacing: "0.08em", textTransform: "uppercase", marginBottom: "6px" };
-  const val: React.CSSProperties   = { ...mono, fontSize: "11px", color: "var(--text3)", lineHeight: 1.5, wordBreak: "break-all" };
+  const label: React.CSSProperties = { ...mono, fontSize: "11px", color: "var(--text4)", letterSpacing: "0.08em", textTransform: "uppercase", marginBottom: "6px" };
+  const val: React.CSSProperties   = { ...mono, fontSize: "14px", color: "var(--text2)", lineHeight: 1.6, wordBreak: "break-all" };
   const divider: React.CSSProperties = { height: "1px", background: "var(--border)", margin: "14px 0" };
 
   return (
@@ -159,25 +159,25 @@ export default function MarketDetail({ market, userAddress, onUpdate }: Props) {
       {/* Header */}
       <div style={{ padding: "16px 18px 14px", borderBottom: "1px solid var(--border)" }}>
         <div style={{ display: "flex", alignItems: "center", gap: "8px", marginBottom: "8px" }}>
-          <div style={{ ...mono, fontSize: "9px", color: "var(--text5)", letterSpacing: "0.08em", textTransform: "uppercase" }}>
+          <div style={{ ...mono, fontSize: "11px", color: "var(--text4)", letterSpacing: "0.08em", textTransform: "uppercase" }}>
             Market #{market.id}
           </div>
           {market.is_demo && (
             <div style={{
               ...mono,
-              fontSize: "8px",
+              fontSize: "10px",
               color: "var(--amber)",
               background: "var(--amber-bg)",
               border: "1px solid var(--amber-br)",
               borderRadius: "2px",
-              padding: "2px 6px",
+              padding: "3px 7px",
               letterSpacing: "0.06em",
             }}>
               DEMO
             </div>
           )}
         </div>
-        <div style={{ fontSize: "13px", color: "var(--text)", lineHeight: "1.45", fontWeight: 400 }}>
+        <div style={{ fontSize: "18px", color: "var(--text)", lineHeight: "1.5", fontWeight: 500 }}>
           {market.question}
         </div>
       </div>
@@ -196,13 +196,13 @@ export default function MarketDetail({ market, userAddress, onUpdate }: Props) {
             { side: "No",  pct: noPct,  pool: noPool,  c: "var(--red)",   bg: "var(--red-bg)",   dim: "#4a2d2d" },
           ].map(({ side, pct, pool, c, bg, dim }) => (
             <div key={side} style={{ background: "var(--bg)", padding: "14px 12px" }}>
-              <div style={{ ...mono, fontSize: "9px", letterSpacing: "0.06em", textTransform: "uppercase", color: dim, marginBottom: "6px" }}>
+              <div style={{ ...mono, fontSize: "11px", letterSpacing: "0.06em", textTransform: "uppercase", color: dim, marginBottom: "6px" }}>
                 {side}
               </div>
-              <div style={{ ...mono, fontSize: "26px", fontWeight: 300, color: c, lineHeight: 1 }}>
+              <div style={{ ...mono, fontSize: "30px", fontWeight: 400, color: c, lineHeight: 1 }}>
                 {pct}%
               </div>
-              <div style={{ ...mono, fontSize: "9px", color: dim, marginTop: "4px" }}>
+              <div style={{ ...mono, fontSize: "11px", color: dim, marginTop: "6px" }}>
                 {pool.toFixed(3)} GEN
               </div>
             </div>
@@ -212,11 +212,11 @@ export default function MarketDetail({ market, userAddress, onUpdate }: Props) {
         {/* Actions */}
         {userAddress && !market.resolved && !expired && (
           <>
-            <div style={{ ...mono, fontSize: "9px", color: "var(--text5)", marginBottom: "8px", lineHeight: 1.5 }}>
+            <div style={{ ...mono, fontSize: "11px", color: "var(--text3)", marginBottom: "10px", lineHeight: 1.6 }}>
               Bets on Bradbury use two on-chain steps: deposit GEN, then record the bet.
             </div>
             {feeConfig.total_fee_bps > 0n && (
-              <div style={{ ...mono, fontSize: "9px", color: "var(--text4)", marginBottom: "8px", lineHeight: 1.5 }}>
+              <div style={{ ...mono, fontSize: "11px", color: "var(--text3)", marginBottom: "10px", lineHeight: 1.6 }}>
                 Entry fee: {(Number(feeConfig.total_fee_bps) / 100).toFixed(2)}%
                 {" "}=
                 {" "}{(Number(feeConfig.creator_fee_bps) / 100).toFixed(2)}% creator
@@ -226,7 +226,7 @@ export default function MarketDetail({ market, userAddress, onUpdate }: Props) {
               </div>
             )}
             {DEMO_FALLBACK_ENABLED && (
-              <div style={{ ...mono, fontSize: "9px", color: "var(--amber)", marginBottom: "8px", lineHeight: 1.5 }}>
+              <div style={{ ...mono, fontSize: "11px", color: "var(--amber)", marginBottom: "10px", lineHeight: 1.6 }}>
                 If Bradbury write txs stall, this browser applies a clearly marked demo fallback so bets, resolution, claims, and withdrawals still complete during the demo.
               </div>
             )}
@@ -239,9 +239,9 @@ export default function MarketDetail({ market, userAddress, onUpdate }: Props) {
                 onChange={(e) => setBetAmount(e.target.value)}
                 style={{
                   background: "var(--bg2)", border: "1px solid var(--border2)",
-                  borderRadius: "3px", padding: "7px 10px",
-                  fontSize: "11px", fontFamily: "var(--mono)",
-                  color: "var(--text3)", outline: "none", width: "100%",
+                  borderRadius: "3px", padding: "10px 12px",
+                  fontSize: "14px", fontFamily: "var(--mono)",
+                  color: "var(--text2)", outline: "none", width: "100%",
                 }}
               />
               <button
@@ -249,8 +249,8 @@ export default function MarketDetail({ market, userAddress, onUpdate }: Props) {
                 disabled={txState === "pending"}
                 style={{
                   background: "var(--green-bg)", border: "1px solid var(--green-br)",
-                  color: "var(--green)", fontFamily: "var(--mono)", fontSize: "10px",
-                  letterSpacing: "0.04em", padding: "7px 12px", borderRadius: "3px",
+                  color: "var(--green)", fontFamily: "var(--mono)", fontSize: "12px",
+                  letterSpacing: "0.04em", padding: "10px 14px", borderRadius: "3px",
                   cursor: "pointer", whiteSpace: "nowrap",
                   opacity: txState === "pending" ? 0.5 : 1,
                 }}
@@ -262,8 +262,8 @@ export default function MarketDetail({ market, userAddress, onUpdate }: Props) {
                 disabled={txState === "pending"}
                 style={{
                   background: "var(--red-bg)", border: "1px solid var(--red-br)",
-                  color: "var(--red)", fontFamily: "var(--mono)", fontSize: "10px",
-                  letterSpacing: "0.04em", padding: "7px 12px", borderRadius: "3px",
+                  color: "var(--red)", fontFamily: "var(--mono)", fontSize: "12px",
+                  letterSpacing: "0.04em", padding: "10px 14px", borderRadius: "3px",
                   cursor: "pointer", whiteSpace: "nowrap",
                   opacity: txState === "pending" ? 0.5 : 1,
                 }}
@@ -283,7 +283,7 @@ export default function MarketDetail({ market, userAddress, onUpdate }: Props) {
                 borderRadius: "3px",
                 marginBottom: "14px",
               }}>
-                <div style={{ ...mono, fontSize: "9px", color: "var(--amber)", lineHeight: 1.5 }}>
+                <div style={{ ...mono, fontSize: "11px", color: "var(--amber)", lineHeight: 1.6 }}>
                   Pending balance: {pendingGEN.toFixed(4)} GEN
                 </div>
                 <button
@@ -294,9 +294,9 @@ export default function MarketDetail({ market, userAddress, onUpdate }: Props) {
                     border: "1px solid var(--amber-br)",
                     color: "var(--amber)",
                     fontFamily: "var(--mono)",
-                    fontSize: "9px",
+                    fontSize: "11px",
                     letterSpacing: "0.04em",
-                    padding: "6px 10px",
+                    padding: "8px 10px",
                     borderRadius: "3px",
                     cursor: "pointer",
                     opacity: txState === "pending" ? 0.5 : 1,
@@ -316,8 +316,8 @@ export default function MarketDetail({ market, userAddress, onUpdate }: Props) {
             style={{
               width: "100%", background: "var(--amber-bg)",
               border: "1px solid var(--amber-br)",
-              color: "var(--amber)", fontFamily: "var(--mono)", fontSize: "10px",
-              letterSpacing: "0.06em", padding: "10px", borderRadius: "3px",
+              color: "var(--amber)", fontFamily: "var(--mono)", fontSize: "12px",
+              letterSpacing: "0.06em", padding: "12px", borderRadius: "3px",
               cursor: "pointer", marginBottom: "14px", textAlign: "center",
               opacity: txState === "pending" ? 0.5 : 1,
             }}
@@ -333,8 +333,8 @@ export default function MarketDetail({ market, userAddress, onUpdate }: Props) {
             style={{
               width: "100%", background: "var(--indigo-bg)",
               border: "1px solid var(--indigo-br)",
-              color: "var(--indigo)", fontFamily: "var(--mono)", fontSize: "10px",
-              letterSpacing: "0.06em", padding: "10px", borderRadius: "3px",
+              color: "var(--indigo)", fontFamily: "var(--mono)", fontSize: "12px",
+              letterSpacing: "0.06em", padding: "12px", borderRadius: "3px",
               cursor: "pointer", marginBottom: "14px", textAlign: "center",
               opacity: txState === "pending" ? 0.5 : 1,
             }}
@@ -346,11 +346,11 @@ export default function MarketDetail({ market, userAddress, onUpdate }: Props) {
         {/* Tx status */}
         {txState !== "idle" && (
           <div style={{
-            ...mono, fontSize: "9px", letterSpacing: "0.04em",
+            ...mono, fontSize: "11px", letterSpacing: "0.04em",
             color: txState === "success" ? "var(--green)" : txState === "error" ? "var(--red)" : "var(--amber)",
             border: `1px solid ${txState === "success" ? "var(--green-br)" : txState === "error" ? "var(--red-br)" : "var(--amber-br)"}`,
             background: txState === "success" ? "var(--green-bg)" : txState === "error" ? "var(--red-bg)" : "var(--amber-bg)",
-            padding: "6px 10px", borderRadius: "3px", marginBottom: "14px",
+            padding: "8px 10px", borderRadius: "3px", marginBottom: "14px",
           }}>
             {txMsg}
           </div>
@@ -361,10 +361,10 @@ export default function MarketDetail({ market, userAddress, onUpdate }: Props) {
         {/* Resolution source */}
         <div style={{ marginBottom: "14px" }}>
           <div style={label}>Resolution source</div>
-          <div style={{ ...mono, fontSize: "10px", color: "var(--green)", wordBreak: "break-all", lineHeight: 1.5 }}>
+          <div style={{ ...mono, fontSize: "12px", color: "var(--green)", wordBreak: "break-all", lineHeight: 1.6 }}>
             {market.resolution_url}
           </div>
-          <div style={{ ...mono, fontSize: "9px", color: "var(--text5)", marginTop: "4px" }}>
+          <div style={{ ...mono, fontSize: "11px", color: "var(--text4)", marginTop: "6px" }}>
             gl.get_webpage() reads this url on-chain at resolution time
           </div>
         </div>
@@ -379,7 +379,7 @@ export default function MarketDetail({ market, userAddress, onUpdate }: Props) {
             <span style={{ color: "var(--text5)", fontWeight: 300 }}>{showCriteria ? "▲" : "▼"}</span>
           </div>
           {showCriteria && (
-            <div style={{ ...mono, fontSize: "10px", color: "var(--text3)", lineHeight: 1.6 }}>
+            <div style={{ ...mono, fontSize: "13px", color: "var(--text2)", lineHeight: 1.7 }}>
               {market.resolution_criteria}
             </div>
           )}
@@ -391,9 +391,9 @@ export default function MarketDetail({ market, userAddress, onUpdate }: Props) {
         <div style={{ marginBottom: "14px" }}>
           <div style={label}>LLM validator consensus</div>
           <div style={{ border: "1px solid var(--border)", borderRadius: "3px", overflow: "hidden" }}>
-            <div style={{ background: "var(--bg2)", padding: "6px 10px", borderBottom: "1px solid var(--border)", display: "grid", gridTemplateColumns: "20px 1fr 60px 50px", gap: "8px" }}>
+            <div style={{ background: "var(--bg2)", padding: "8px 10px", borderBottom: "1px solid var(--border)", display: "grid", gridTemplateColumns: "24px 1fr 72px 58px", gap: "10px" }}>
               {["#", "model", "role", "verdict"].map((h) => (
-                <span key={h} style={{ ...mono, fontSize: "8px", color: "var(--text5)", letterSpacing: "0.06em", textTransform: "uppercase" }}>{h}</span>
+                <span key={h} style={{ ...mono, fontSize: "10px", color: "var(--text4)", letterSpacing: "0.06em", textTransform: "uppercase" }}>{h}</span>
               ))}
             </div>
             {VALIDATORS.map((v, i) => {
@@ -404,26 +404,26 @@ export default function MarketDetail({ market, userAddress, onUpdate }: Props) {
                 <div
                   key={i}
                   style={{
-                    padding: "7px 10px",
+                    padding: "9px 10px",
                     borderBottom: i < 4 ? "1px solid var(--border)" : "none",
                     display: "grid",
-                    gridTemplateColumns: "20px 1fr 60px 50px",
-                    gap: "8px",
+                    gridTemplateColumns: "24px 1fr 72px 58px",
+                    gap: "10px",
                     alignItems: "center",
                     background: "var(--bg)",
                   }}
                 >
-                  <span style={{ ...mono, fontSize: "9px", color: "var(--text5)" }}>
+                  <span style={{ ...mono, fontSize: "11px", color: "var(--text4)" }}>
                     {String(i + 1).padStart(2, "0")}
                   </span>
-                  <span style={{ ...mono, fontSize: "10px", color: "var(--text4)" }}>
+                  <span style={{ ...mono, fontSize: "12px", color: "var(--text2)" }}>
                     {v.model}
                   </span>
-                  <span style={{ ...mono, fontSize: "8px", color: "var(--text5)", letterSpacing: "0.04em" }}>
+                  <span style={{ ...mono, fontSize: "10px", color: "var(--text4)", letterSpacing: "0.04em" }}>
                     {v.role}
                   </span>
                   <span style={{
-                    ...mono, fontSize: "10px", fontWeight: 400,
+                    ...mono, fontSize: "12px", fontWeight: 500,
                     color: verdict === null
                       ? "var(--text5)"
                       : verdict
@@ -436,7 +436,7 @@ export default function MarketDetail({ market, userAddress, onUpdate }: Props) {
               );
             })}
           </div>
-          <div style={{ ...mono, fontSize: "9px", color: "var(--text5)", marginTop: "5px" }}>
+          <div style={{ ...mono, fontSize: "11px", color: "var(--text4)", marginTop: "6px" }}>
             optimistic democracy · 3/5 majority required
           </div>
         </div>

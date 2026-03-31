@@ -50,30 +50,30 @@ export default function MarketFeed({ markets, selected, onSelect }: Props) {
             onClick={() => onSelect(m)}
             style={{
               borderBottom: "1px solid var(--border)",
-              padding: "14px 20px",
+              padding: "18px 22px",
               cursor: "pointer",
               background: isActive ? "var(--bg2)" : "transparent",
-              borderLeft: isActive ? "2px solid var(--green)" : "2px solid transparent",
+              borderLeft: isActive ? "3px solid var(--green)" : "3px solid transparent",
               transition: "background 0.1s",
             }}
           >
             {/* Top row */}
             <div style={{ display: "flex", alignItems: "flex-start", justifyContent: "space-between", gap: "12px", marginBottom: "8px" }}>
-              <div style={{ fontSize: "12px", color: "var(--text)", lineHeight: "1.4", flex: 1, fontWeight: 400 }}>
+              <div style={{ fontSize: "15px", color: "var(--text)", lineHeight: "1.5", flex: 1, fontWeight: 500 }}>
                 {m.question}
               </div>
               <div style={{ textAlign: "right", flexShrink: 0 }}>
                 <div style={{
                   fontFamily: "var(--mono)",
-                  fontSize: m.resolved ? "12px" : "18px",
-                  fontWeight: 300,
+                  fontSize: m.resolved ? "15px" : "24px",
+                  fontWeight: 400,
                   color: m.resolved ? "var(--indigo)" : "var(--green)",
                   lineHeight: 1,
                 }}>
                   {m.resolved ? (m.outcome ? "YES" : "NO") : `${yesPct}%`}
                 </div>
                 {!m.resolved && (
-                  <div style={{ fontFamily: "var(--mono)", fontSize: "9px", color: "var(--text5)", marginTop: "2px" }}>
+                  <div style={{ fontFamily: "var(--mono)", fontSize: "11px", color: "var(--text4)", marginTop: "4px" }}>
                     YES
                   </div>
                 )}
@@ -84,37 +84,37 @@ export default function MarketFeed({ markets, selected, onSelect }: Props) {
             <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
               {m.is_demo && (
                 <span style={{
-                  fontFamily: "var(--mono)", fontSize: "8px",
+                  fontFamily: "var(--mono)", fontSize: "10px",
                   letterSpacing: "0.06em",
                   color: "var(--amber)",
                   background: "var(--amber-bg)",
                   border: "1px solid var(--amber-br)",
-                  padding: "2px 6px",
+                  padding: "3px 7px",
                   borderRadius: "2px",
                 }}>
                   DEMO
                 </span>
               )}
               <span style={{
-                fontFamily: "var(--mono)", fontSize: "8px",
+                fontFamily: "var(--mono)", fontSize: "10px",
                 letterSpacing: "0.06em",
                 color: statusColor,
                 background: statusBg,
                 border: `1px solid ${statusBr}`,
-                padding: "2px 6px",
+                padding: "3px 7px",
                 borderRadius: "2px",
               }}>
                 {statusLabel}
               </span>
               <span style={{
-                fontFamily: "var(--mono)", fontSize: "9px",
-                color: "var(--text5)",
+                fontFamily: "var(--mono)", fontSize: "11px",
+                color: "var(--text4)",
                 display: "flex", alignItems: "center", gap: "4px",
               }}>
                 <span style={{ width: "3px", height: "3px", background: "var(--text5)", borderRadius: "50%", display: "inline-block" }} />
                 {domain}
               </span>
-              <span style={{ fontFamily: "var(--mono)", fontSize: "9px", color: "var(--text5)", marginLeft: "auto" }}>
+              <span style={{ fontFamily: "var(--mono)", fontSize: "11px", color: "var(--text3)", marginLeft: "auto" }}>
                 {totalPool.toFixed(3)} GEN
               </span>
             </div>

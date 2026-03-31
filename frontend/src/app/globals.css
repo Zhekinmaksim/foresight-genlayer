@@ -9,29 +9,29 @@
 }
 
 :root {
-  --bg:       #0c0c0c;
-  --bg1:      #0f0f0f;
-  --bg2:      #111111;
-  --bg3:      #161616;
-  --border:   #1a1a1a;
-  --border2:  #222222;
-  --text:     #c8c4bc;
-  --text2:    #8b8680;
-  --text3:    #5a5850;
-  --text4:    #3d3d3d;
-  --text5:    #2d2d2d;
-  --green:    #4a7c5f;
-  --green-bg: #0f1f18;
-  --green-br: #1d3028;
-  --red:      #7c4a4a;
-  --red-bg:   #1f0f0f;
-  --red-br:   #2e1a1a;
-  --amber:    #7c6a4a;
-  --amber-bg: #1a1508;
-  --amber-br: #2a2010;
-  --indigo:   #4a4a7c;
-  --indigo-bg:#0f0f1f;
-  --indigo-br:#1a1a2e;
+  --bg:       #111111;
+  --bg1:      #161616;
+  --bg2:      #1c1c1c;
+  --bg3:      #262626;
+  --border:   #2b2b2b;
+  --border2:  #383838;
+  --text:     #f1ece3;
+  --text2:    #ddd5c8;
+  --text3:    #c8c0b4;
+  --text4:    #aba395;
+  --text5:    #8e867a;
+  --green:    #7fcea1;
+  --green-bg: #13231b;
+  --green-br: #294534;
+  --red:      #d48d8d;
+  --red-bg:   #261414;
+  --red-br:   #503030;
+  --amber:    #d1b177;
+  --amber-bg: #231c0f;
+  --amber-br: #4b3a1c;
+  --indigo:   #a7acee;
+  --indigo-bg:#17192a;
+  --indigo-br:#353b5e;
   --mono:     'IBM Plex Mono', monospace;
   --serif:    'Instrument Serif', serif;
   --sans:     'Inter', sans-serif;
@@ -41,8 +41,8 @@ html, body {
   background: var(--bg);
   color: var(--text);
   font-family: var(--sans);
-  font-size: 14px;
-  line-height: 1.5;
+  font-size: 16px;
+  line-height: 1.6;
   -webkit-font-smoothing: antialiased;
 }
 
@@ -53,7 +53,7 @@ html, body {
 
 input, textarea, button {
   font-family: var(--mono);
-  font-size: 11px;
+  font-size: 13px;
 }
 
 /* Scrollbar */
